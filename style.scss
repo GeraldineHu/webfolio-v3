@@ -1,0 +1,504 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap');
+
+
+
+$flashy: #ff0054;
+$backgroundColor: #FAFAFA;
+$borderColor: #101820;
+$sectionColorEven: #FAFAFA;
+$navColor: #ffffff;
+$textColor: #101820;
+$shadowColorInner: #DEE1E4;
+$shadowColorOuter: #E8DEDC;
+
+$borderSize: 1px;
+
+$borderStyle: $borderSize solid $borderColor;
+
+
+$mainWidthMobile: calc(100vw - 34px);
+
+
+$fontRoseblue: "Roseblue";
+$fontInconsolata: "Inconsolata";
+
+
+/* <------------------- BASE -------------------> */
+
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: $backgroundColor;
+  line-height: 1.6;
+}
+
+@media all and (min-width: 780px) {
+  body {
+    overflow: hidden;
+  }
+}
+
+::selection {
+  background-color: $flashy;
+  color: #fff;
+}
+
+/* <------------------- FLEX -------------------> */
+
+.flexContainer {
+  display: flex;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.flexCenter {
+  justify-content: center;
+  align-items: center;
+}
+
+
+/* <------------------- CURSEUR -------------------> */
+
+
+/* <------------------- BOUTON CONTACT -------------------> */
+
+
+.btn {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  height: auto;
+  width: auto;
+  z-index: 100;
+}
+
+
+/* <------------------- TEXTE -------------------> */
+
+
+h1 {
+  font-family: $fontRoseblue;
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: $textColor;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: 'Roseblue';
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-family: $fontInconsolata;
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+p, li, a, figcaption {
+  font-family: $fontInconsolata, monospace;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-decoration: none;
+  color: $textColor;
+}
+
+
+
+
+
+/* <------------------- NAVIGATION -------------------> */
+
+
+nav {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  z-index: 50;
+  height: 10vh;
+  background-color: $navColor;
+  border-bottom: $borderStyle;
+  justify-content: center;
+}
+
+.menuToggle {
+  display: block;  
+  z-index: 1;  
+  -webkit-user-select: none;
+  user-select: none;
+  a {
+    opacity: 0;
+    transition: color 0.6s ease,
+                opacity 0.6s ease;
+    :hover {
+      color: $flashy;
+    }
+  }
+}
+
+nav input:checked ~ .menuToggle a {
+  display: block;
+  opacity: 1;
+  color: $textColor;
+  &:hover {
+    color: $flashy;
+  }
+}
+
+nav input {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 32px;
+  align-self: center;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2; 
+  -webkit-touch-callout: none;
+}
+
+.spanBox {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+
+.spanBox span {
+  display: block;
+  width: 33px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;  
+  background: $textColor;
+  border-radius: 3px;  
+  z-index: 2;
+  transform-origin: 0px 0px;
+  transition: transform 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              background 0.5s cubic-bezier(0.77,0.2,0.05,1.0),
+              opacity 0.55s ease;
+  :first-child {
+    transform-origin: 0% 0%;
+  }
+  :nth-last-child(3) {
+    transform-origin: 0% 100%;
+  }
+}
+
+
+
+nav input:checked ~ .spanBox span {
+  opacity: 1;
+  transform: rotate(50deg) translate(-2px, -1px);
+  background: $textColor;
+}
+
+nav input:checked ~ .spanBox span:nth-last-of-type(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+nav input:checked ~ .spanBox span:nth-last-child(1) {
+  transform: rotate(-55deg) translate(-4px, -2px);
+}
+
+
+
+.menu {
+  position: absolute;
+  width: $mainWidthMobile;
+  padding: 10% 0;
+  background: $navColor;
+  border-bottom: $borderStyle;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform: scale(1, 0);
+  transform-origin: 0% 0%;
+  transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);
+  ul li {
+  padding: 10px 0;
+  font-size: 22px;
+  list-style-type: none;
+  }
+}
+
+nav input:checked ~ .menuToggle .menu {
+  transform: none;
+}
+
+@media all and (min-width: 780px) {
+  nav {
+    position: fixed;
+    z-index: 50;
+    height: 100vh;
+    width: 5vw;
+    border-right: $borderStyle;
+    border-bottom: none;
+  }
+  nav input {
+    width: 60px;
+    height: 60px;
+  }
+  .menu {
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    padding: 50px;
+    padding-top: 125px;
+    border-bottom: none;
+    border-right: $borderStyle;
+    transform: scale(0, 1);
+  }
+
+}
+
+
+
+/* <------------------- MAIN -------------------> */
+
+main {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin: 15px;
+}
+
+
+
+@media all and (min-width: 780px) {
+  main {
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+}
+
+
+/* <------------------- SECTIONS -------------------> */
+
+
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 82px);
+  align-items: center;
+  font-size: 4ch;
+  ul {
+    display: flex;
+    flex-direction: column;
+  }
+  &:nth-child(even) {
+    background-color: $sectionColorEven;
+  }
+  &:nth-child(odd) {
+    background-color: #e3e3e3;
+  }
+}
+
+#section__end h2 {
+  border-bottom: 4px solid $flashy;
+  }
+
+
+@media all and (min-width: 780px) {
+  section {
+    flex-direction: row;
+    width: auto;
+    min-width: 100vw;
+    height: 100vh;
+  }
+}
+
+/* <------------------- SECTION 1 -------------------> */
+
+#section__01 {
+  background: url('bg_bota1.jpg') center;
+  background-size: cover;
+}
+
+#btnScrollX {
+  position: absolute;
+  right: 5%;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: yellow;
+  animation: rotateBtn 4s infinite forwards;
+}
+
+@keyframes rotateBtn {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+#content__01 {
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 700px;
+  background-color: $textColor;
+  h1, h3 {
+    color: #fff;
+  }
+}
+
+/* <------------------- SECTION 2 -------------------> */
+
+
+#section__02 {
+  width: auto;
+  min-width: auto;
+  margin: 0 15%;
+}
+#section__02 figure {
+  position: relative;
+  height: 80vh;
+  width: 30vw;
+  overflow: hidden;
+  figcaption {
+    position: absolute;
+    align-items: flex-end;
+    padding: 40px;
+    width: 100%;
+    height: 100%;
+    top: 0;
+    left: 0;
+  }
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+    filter: sepia(100%) hue-rotate(195deg) saturate(400%) contrast(1.2);
+    transition: all 400ms ease-in-out;
+  }
+}
+
+#section__02 figure:hover img {
+  transform: scale(1.4) translate(-50px,-20px);
+}
+
+
+/* <------------------- SECTION 3 -------------------> */
+
+#section__03 {
+  align-items: flex-start;
+  background: $textColor no-repeat fixed;
+  background-size: cover;
+  min-width: 70vw;
+  h3, p, a {
+    color: #fff;
+  }
+  div {
+    width: 70%;
+    margin: 0 auto;
+  }
+}
+
+#section__03 h2 {
+  animation: translate_h2 12s linear alternate infinite;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  font-size: 12rem;
+  text-transform: lowercase;
+}
+
+@keyframes translate_h2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+/* <------------------- SECTION 4 -------------------> */
+
+#section__04 {
+  min-width: 20vw;
+  background: url('bg_bota1.jpg') no-repeat fixed center;
+  background-size: cover;
+}
+
+
+/* <------------------- TEXT SHADOW -------------------> */
+
+.textShadow {
+  width: 100%;
+  background-color: #0E2736;
+  position: relative;
+}
+
+.onTop {
+  position: absolute;
+  z-index: 1;
+}
+
+.onBottom {
+  position: absolute;
+  z-index: 0;
+  top: 1px;
+  background: url("http://100daysoffonts.com/images/black-stripe2.png") center fixed;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  h2 {
+    font-weight: 400;
+  }
+}
+
+/* <------------------- FOOTER -------------------> */
+
+#footer {
+  display: flex;
+  flex-direction: column;
+  border-top: $borderStyle;
+  background-color: $navColor;
+  width: 100%;
+  height: 10vh;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 4ch;
+  }
+
+  @media all and (min-width: 780px) {
+    #footer {
+      border-left: $borderStyle;
+      border-top: none;
+      min-width: 7vw;
+      width: auto;
+      height: 100vh;
+      p {
+        writing-mode: vertical-rl;
+        text-orientation: mixed;
+        letter-spacing: 0.5rem;
+      }
+      }
+  }
+
+
+
+
+

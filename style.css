@@ -1,0 +1,430 @@
+@import url("https://fonts.googleapis.com/css2?family=Nanum+Gothic+Coding&display=swap");
+/* <------------------- BASE -------------------> */
+html {
+  font-size: 62.5%;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background-color: #FAFAFA;
+  line-height: 1.6;
+}
+
+@media all and (min-width: 780px) {
+  body {
+    overflow: hidden;
+  }
+}
+::selection {
+  background-color: #ff0054;
+  color: #fff;
+}
+
+/* <------------------- FLEX -------------------> */
+.flexContainer {
+  display: flex;
+}
+
+.flexColumn {
+  flex-direction: column;
+}
+
+.flexCenter {
+  justify-content: center;
+  align-items: center;
+}
+
+/* <------------------- CURSEUR -------------------> */
+/* <------------------- BOUTON CONTACT -------------------> */
+.btn {
+  position: fixed;
+  right: 5%;
+  bottom: 5%;
+  height: auto;
+  width: auto;
+  z-index: 100;
+}
+
+/* <------------------- TEXTE -------------------> */
+h1 {
+  font-family: "Roseblue";
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 2px;
+  color: #101820;
+  text-transform: uppercase;
+}
+
+h2 {
+  font-family: "Roseblue";
+  font-size: 6rem;
+  margin: 0;
+  font-weight: 300;
+  letter-spacing: 1px;
+}
+
+h3 {
+  font-family: "Inconsolata";
+  font-size: 2rem;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: 2px;
+}
+
+p, li, a, figcaption {
+  font-family: "Inconsolata", monospace;
+  font-size: 1.8rem;
+  font-weight: 300;
+  text-decoration: none;
+  color: #101820;
+}
+
+/* <------------------- NAVIGATION -------------------> */
+nav {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  z-index: 50;
+  height: 10vh;
+  background-color: #ffffff;
+  border-bottom: 1px solid #101820;
+  justify-content: center;
+}
+
+.menuToggle {
+  display: block;
+  z-index: 1;
+  -webkit-user-select: none;
+  user-select: none;
+}
+.menuToggle a {
+  opacity: 0;
+  transition: color 0.6s ease, opacity 0.6s ease;
+}
+.menuToggle a :hover {
+  color: #ff0054;
+}
+
+nav input:checked ~ .menuToggle a {
+  display: block;
+  opacity: 1;
+  color: #101820;
+}
+nav input:checked ~ .menuToggle a:hover {
+  color: #ff0054;
+}
+
+nav input {
+  display: block;
+  position: absolute;
+  width: 40px;
+  height: 32px;
+  align-self: center;
+  cursor: pointer;
+  opacity: 0;
+  z-index: 2;
+  -webkit-touch-callout: none;
+}
+
+.spanBox {
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.spanBox span {
+  display: block;
+  width: 33px;
+  height: 2px;
+  margin-bottom: 5px;
+  position: relative;
+  background: #101820;
+  border-radius: 3px;
+  z-index: 2;
+  transform-origin: 0px 0px;
+  transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), background 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+}
+.spanBox span :first-child {
+  transform-origin: 0% 0%;
+}
+.spanBox span :nth-last-child(3) {
+  transform-origin: 0% 100%;
+}
+
+nav input:checked ~ .spanBox span {
+  opacity: 1;
+  transform: rotate(50deg) translate(-2px, -1px);
+  background: #101820;
+}
+
+nav input:checked ~ .spanBox span:nth-last-of-type(2) {
+  opacity: 0;
+  transform: rotate(0deg) scale(0.2, 0.2);
+}
+
+nav input:checked ~ .spanBox span:nth-last-child(1) {
+  transform: rotate(-55deg) translate(-4px, -2px);
+}
+
+.menu {
+  position: absolute;
+  width: calc(100vw - 34px);
+  padding: 10% 0;
+  background: #ffffff;
+  border-bottom: 1px solid #101820;
+  -webkit-font-smoothing: antialiased;
+  /* to stop flickering of text in safari */
+  transform: scale(1, 0);
+  transform-origin: 0% 0%;
+  transition: transform 0.7s cubic-bezier(0.77, 0.2, 0.05, 1);
+}
+.menu ul li {
+  padding: 10px 0;
+  font-size: 22px;
+  list-style-type: none;
+}
+
+nav input:checked ~ .menuToggle .menu {
+  transform: none;
+}
+
+@media all and (min-width: 780px) {
+  nav {
+    position: fixed;
+    z-index: 50;
+    height: 100vh;
+    width: 5vw;
+    border-right: 1px solid #101820;
+    border-bottom: none;
+  }
+
+  nav input {
+    width: 60px;
+    height: 60px;
+  }
+
+  .menu {
+    position: absolute;
+    top: 0;
+    width: 300px;
+    height: 100%;
+    padding: 50px;
+    padding-top: 125px;
+    border-bottom: none;
+    border-right: 1px solid #101820;
+    transform: scale(0, 1);
+  }
+}
+/* <------------------- MAIN -------------------> */
+main {
+  display: flex;
+  flex-direction: column;
+  overflow-x: hidden;
+  margin: 15px;
+}
+
+@media all and (min-width: 780px) {
+  main {
+    flex-direction: row;
+    position: relative;
+    overflow: hidden;
+    margin: 0;
+  }
+}
+/* <------------------- SECTIONS -------------------> */
+section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 82px);
+  align-items: center;
+  font-size: 4ch;
+}
+section ul {
+  display: flex;
+  flex-direction: column;
+}
+section:nth-child(even) {
+  background-color: #FAFAFA;
+}
+section:nth-child(odd) {
+  background-color: #e3e3e3;
+}
+
+#section__end h2 {
+  border-bottom: 4px solid #ff0054;
+}
+
+@media all and (min-width: 780px) {
+  section {
+    flex-direction: row;
+    width: auto;
+    min-width: 100vw;
+    height: 100vh;
+  }
+}
+/* <------------------- SECTION 1 -------------------> */
+#section__01 {
+  background: url("bg_bota1.jpg") center;
+  background-size: cover;
+}
+
+#btnScrollX {
+  position: absolute;
+  right: 5%;
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: yellow;
+  animation: rotateBtn 4s infinite forwards;
+}
+
+@keyframes rotateBtn {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+#content__01 {
+  justify-content: center;
+  align-items: center;
+  height: 400px;
+  width: 700px;
+  background-color: #101820;
+}
+#content__01 h1, #content__01 h3 {
+  color: #fff;
+}
+
+/* <------------------- SECTION 2 -------------------> */
+#section__02 {
+  width: auto;
+  min-width: auto;
+  margin: 0 15%;
+}
+
+#section__02 figure {
+  position: relative;
+  height: 80vh;
+  width: 30vw;
+  overflow: hidden;
+}
+#section__02 figure figcaption {
+  position: absolute;
+  align-items: flex-end;
+  padding: 40px;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+}
+#section__02 figure img {
+  object-fit: cover;
+  width: 100%;
+  height: 100%;
+  filter: sepia(100%) hue-rotate(195deg) saturate(400%) contrast(1.2);
+  transition: all 400ms ease-in-out;
+}
+
+#section__02 figure:hover img {
+  transform: scale(1.4) translate(-50px, -20px);
+}
+
+/* <------------------- SECTION 3 -------------------> */
+#section__03 {
+  align-items: flex-start;
+  background: #101820 no-repeat fixed;
+  background-size: cover;
+  min-width: 70vw;
+}
+#section__03 h3, #section__03 p, #section__03 a {
+  color: #fff;
+}
+#section__03 div {
+  width: 70%;
+  margin: 0 auto;
+}
+
+#section__03 h2 {
+  animation: translate_h2 12s linear alternate infinite;
+  color: transparent;
+  -webkit-text-stroke: 1px #fff;
+  font-size: 12rem;
+  text-transform: lowercase;
+}
+
+@keyframes translate_h2 {
+  0% {
+    transform: translateX(0%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+/* <------------------- SECTION 4 -------------------> */
+#section__04 {
+  min-width: 20vw;
+  background: url("bg_bota1.jpg") no-repeat fixed center;
+  background-size: cover;
+}
+
+/* <------------------- TEXT SHADOW -------------------> */
+.textShadow {
+  width: 100%;
+  background-color: #0E2736;
+  position: relative;
+}
+
+.onTop {
+  position: absolute;
+  z-index: 1;
+}
+
+.onBottom {
+  position: absolute;
+  z-index: 0;
+  top: 1px;
+  background: url("http://100daysoffonts.com/images/black-stripe2.png") center fixed;
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+}
+.onBottom h2 {
+  font-weight: 400;
+}
+
+/* <------------------- FOOTER -------------------> */
+#footer {
+  display: flex;
+  flex-direction: column;
+  border-top: 1px solid #101820;
+  background-color: #ffffff;
+  width: 100%;
+  height: 10vh;
+  right: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: 4ch;
+}
+
+@media all and (min-width: 780px) {
+  #footer {
+    border-left: 1px solid #101820;
+    border-top: none;
+    min-width: 7vw;
+    width: auto;
+    height: 100vh;
+  }
+  #footer p {
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+    letter-spacing: 0.5rem;
+  }
+}
+
+/*# sourceMappingURL=style.css.map */
