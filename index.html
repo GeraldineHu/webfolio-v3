@@ -8,18 +8,18 @@
         <title>Webfolio</title>
     </head>
     <body>
-        <main>
+        <main id="main-X">
             <div class="btn" id="contactBtn"><a href="">Contactez-moi</a></div>
             <nav>
                 <input type="checkbox" />
                 <div class="spanBox">
-                <span></span>
-                <span></span>
-                <span></span>
-            </div>
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
                 <div class="menuToggle">
-                    <div class="menu">
-                        <ul>
+                    <div class="menu flexContainer flexCenter">
+                        <ul class="flexContainer flexColumn">
                             <li><a href="#section__01">Accueil</a></li>
                             <li><a href="#section__02">About</a></li>
                             <li><a href="./projets.html">Projets</a></li>
@@ -34,7 +34,16 @@
                     <h1>Géraldine Hurteau</h1>
                     <h3>Conceptrice designer Web en formation</h3>
                 </div>
-                <div id="btnScrollX" class="flexContainer flexCenter"><a href="#section__02">>></a></div>
+                <div id="btnScrollX" class="flexContainer flexCenter">
+                    <a href="#section__02">
+                        <svg id="btnScroll" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 292.11 293.91">
+                            <g id="btnScrollText">
+                                <text class="btnScrollText" transform="translate(64.19 65.1) rotate(-39.92)"><tspan x="0" y="0">C</tspan></text><text class="btnScrollText" transform="translate(78.26 53.24) rotate(-30.77)"><tspan x="0" y="0">’</tspan></text><text class="btnScrollText" transform="translate(94.05 43.76) rotate(-21.54)"><tspan x="0" y="0">E</tspan></text><text class="btnScrollText" transform="translate(111.15 36.94) rotate(-12.31)"><tspan x="0" y="0">S</tspan></text><text class="btnScrollText" transform="translate(129.11 32.99) rotate(-3.33)"><tspan x="0" y="0">T</tspan></text><text class="btnScrollText" transform="translate(147.51 31.87) rotate(5.9)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(165.82 33.7) rotate(15.12)"><tspan x="0" y="0">P</tspan></text><text class="btnScrollText" transform="translate(183.61 38.44) rotate(24.35)"><tspan x="0" y="0">A</tspan></text><text class="btnScrollText" transform="translate(200.42 45.98) rotate(33.53)"><tspan x="0" y="0">R</tspan></text><text class="btnScrollText" transform="translate(215.8 56.09) rotate(42.65)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(229.38 68.51) rotate(51.77)"><tspan x="0" y="0">I</tspan></text><text class="btnScrollText" transform="translate(240.83 82.95) rotate(60.95)"><tspan x="0" y="0">C</tspan></text><text class="btnScrollText" transform="translate(249.83 99.02) rotate(70.18)"><tspan x="0" y="0">I</tspan></text><text class="btnScrollText" transform="translate(256.13 116.31) rotate(79.4)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(259.57 134.38) rotate(88.52)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(260.12 152.8) rotate(97.61)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(257.75 171.05) rotate(106.84)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(252.47 188.69) rotate(116.06)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(244.44 205.25) rotate(125.22)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(233.87 220.33) rotate(134.35)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(221.03 233.56) rotate(143.49)"><tspan x="0" y="0">C</tspan></text><text class="btnScrollText" transform="translate(206.28 244.56) rotate(152.66)"><tspan x="0" y="0">’</tspan></text><text class="btnScrollText" transform="translate(189.97 253.07) rotate(161.9)"><tspan x="0" y="0">E</tspan></text><text class="btnScrollText" transform="translate(172.47 258.85) rotate(171.12)"><tspan x="0" y="0">S</tspan></text><text class="btnScrollText" transform="translate(154.28 261.75) rotate(-179.82)"><tspan x="0" y="0">T</tspan></text><text class="btnScrollText" transform="translate(135.88 261.76) rotate(-170.67)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(117.71 258.84) rotate(-161.43)"><tspan x="0" y="0">P</tspan></text><text class="btnScrollText" transform="translate(100.24 253.04) rotate(-152.22)"><tspan x="0" y="0">A</tspan></text><text class="btnScrollText" transform="translate(83.9 244.51) rotate(-143.07)"><tspan x="0" y="0">R</tspan></text><text class="btnScrollText" transform="translate(69.15 233.49) rotate(-133.95)"><tspan x="0" y="0"> </tspan></text><text class="btnScrollText" transform="translate(56.33 220.28) rotate(-124.81)"><tspan x="0" y="0">I</tspan></text><text class="btnScrollText" transform="translate(45.77 205.21) rotate(-115.62)"><tspan x="0" y="0">C</tspan></text><text class="btnScrollText" transform="translate(37.75 188.64) rotate(-106.38)"><tspan x="0" y="0">I</tspan></text>
+                            </g>
+                            <polygon id="btnScrollFleche" points="203.4 147 94.8 104.44 94.8 189.56 203.4 147"/>
+                        </svg>
+                    </a>
+                </div>
             </section>
             <section id="section__02">
                 <div  class="flexContainer">
@@ -44,7 +53,7 @@
                     </figure>
                     <figure>
                         <a href="">
-                            <img src="background_poster.jpg" alt="">
+                            <img src="./img/background_poster.jpg" alt="">
                             <figcaption class="flexContainer">Cousin & Compagnie</figcaption>
                         </a>
                     </figure>

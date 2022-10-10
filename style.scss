@@ -7,8 +7,10 @@ $navWidth: 5vw;
 
 $flashy: #ff0054;
 $backgroundColor: #FAFAFA;
+$backgroundColorVar2: #FAFAFA;
+$backgroundColorVar3: #e3e3e3;
+$backgroundColorVar4: #101820;
 $borderColor: #101820;
-$sectionColorEven: #FAFAFA;
 $navColor: #ffffff;
 $textColor: #101820;
 $shadowColorInner: #DEE1E4;
@@ -38,14 +40,7 @@ html {
 
 body {
   margin: 0;
-  background-color: $backgroundColor;
   line-height: 1.6;
-}
-
-@media all and (min-width: 780px) {
-  body {
-    overflow: hidden;
-  }
 }
 
 ::selection {
@@ -87,6 +82,15 @@ body {
 
 /* <------------------- TEXTE -------------------> */
 
+h1, h2, h3, p, ul, li, img {
+  padding: 0;
+  margin: 0;
+}
+
+
+img {
+  max-width: 100%;
+}
 
 h1 {
   font-family: $fontRoseblue;
@@ -120,6 +124,7 @@ p, li, a, figcaption {
   font-weight: 300;
   text-decoration: none;
   color: $textColor;
+  list-style: none;
 }
 
 
@@ -172,7 +177,7 @@ nav input {
   align-self: center;
   cursor: pointer;
   opacity: 0;
-  z-index: 2; 
+  z-index: 3; 
   -webkit-touch-callout: none;
 }
 
@@ -226,23 +231,21 @@ nav input:checked ~ .spanBox span:nth-last-child(1) {
 .menu {
   position: absolute;
   width: $mainWidthMobile;
-  padding: 10% 0;
   background: $navColor;
   border-bottom: $borderStyle;
   -webkit-font-smoothing: antialiased;
   /* to stop flickering of text in safari */
-  transform: scale(1, 0);
-  transform-origin: 0% 0%;
-  transition: transform 0.7s cubic-bezier(0.77,0.2,0.05,1.0);
-  ul li {
-  padding: 10px 0;
-  font-size: 22px;
-  list-style-type: none;
+  transform: translate(0, -150%);
+  transition: transform 700ms cubic-bezier(0.77,0.2,0.05,1.0), opacity 200ms linear 200ms;
+  ul {
+    gap: 20px;
+    padding: 0;
   }
 }
 
 nav input:checked ~ .menuToggle .menu {
   transform: none;
+  opacity: 1;
 }
 
 @media all and (min-width: 780px) {
@@ -263,11 +266,9 @@ nav input:checked ~ .menuToggle .menu {
     top: 0;
     width: 300px;
     height: 100%;
-    padding: 50px;
-    padding-top: 125px;
     border-bottom: none;
     border-right: $borderStyle;
-    transform: scale(0, 1);
+    transform: translate(-110%, 0);
   }
 
 }
@@ -276,7 +277,7 @@ nav input:checked ~ .menuToggle .menu {
 
 /* <------------------- MAIN -------------------> */
 
-main {
+#main-X {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
@@ -286,7 +287,7 @@ main {
 
 
 @media all and (min-width: 780px) {
-  main {
+  #main-X {
     flex-direction: row;
     position: relative;
     overflow: hidden;
@@ -311,10 +312,10 @@ section {
     flex-direction: column;
   }
   &:nth-child(even) {
-    background-color: $sectionColorEven;
+    background-color: $backgroundColorVar2;
   }
   &:nth-child(odd) {
-    background-color: #e3e3e3;
+    background-color: $backgroundColorVar3;
   }
 }
 
@@ -345,7 +346,31 @@ section {
   height: 80px;
   border-radius: 100%;
   background-color: yellow;
-  animation: rotateBtn 4s infinite forwards;
+  a {
+    display: flex;
+  }
+  &:hover #btnScrollText {
+    stroke: yellow;
+  }
+}
+
+#btnScroll {
+  width: 120px;
+  height: 120px;
+  #btnScrollFleche {
+    fill: none;
+    stroke-width: 10px;
+    stroke: #fff;
+  }
+  #btnScrollText {
+    animation: rotateBtn 10s infinite linear forwards;
+    transform-origin: 50% 50%;
+    stroke: $textColor;
+  }
+  .btnScrollText {
+    font-family: $fontInconsolata;
+    font-size:32px;
+  }
 }
 
 @keyframes rotateBtn {
@@ -371,7 +396,7 @@ section {
 #section__02 {
   width: auto;
   min-width: auto;
-  margin: 0 15%;
+  padding: 0 15%;
 }
 #section__02 figure {
   position: relative;
@@ -411,6 +436,7 @@ section {
   background: $textColor no-repeat fixed;
   background-size: cover;
   min-width: 70vw;
+  overflow: hidden;
   h3, p, a {
     color: #fff;
   }
@@ -421,19 +447,19 @@ section {
 }
 
 #section__03 h2 {
-  animation: translate_h2 12s linear alternate infinite;
+  animation: roll_h2 15s linear alternate infinite;
   color: transparent;
   -webkit-text-stroke: 1px #fff;
   font-size: 12rem;
   text-transform: lowercase;
 }
 
-@keyframes translate_h2 {
+@keyframes roll_h2 {
   0% {
-    transform: translateX(0%);
+    transform: translateX(0);
   }
   100% {
-    transform: translateX(100%);
+    transform: translateX(calc(70vw - 100%));
   }
 }
 
@@ -511,7 +537,7 @@ footer {
   min-width: auto;
   margin-left: $navWidth;
   justify-content: space-evenly;
-  background-color: #f5f5f5;
+  background-color: $backgroundColorVar2;
 }
 
 .svgArrow {
@@ -530,10 +556,12 @@ footer {
   position: relative;
   width: 65vw;
   height: 70vh;
+  overflow: hidden;
   img {
     object-fit: cover;
     width: 100%;
     height: 100%;
+    transition: all 500ms ease-in-out;
   }
   #content_description {
     position: absolute;
@@ -546,9 +574,14 @@ footer {
     padding: 30px;
     background-color: rgba(15, 10, 222, 0.7);
     opacity: 0;
-    transition: all 500ms ease-in-out;
+    transition: all 600ms ease-in-out 200ms;
     figcaption, p {
       color: #fff;
+    }
+    figcaption {
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-weight: 500;
     }
   }
 }
@@ -557,3 +590,129 @@ footer {
   opacity: 1;
 }
 
+#slide figure:hover img {
+  transform: scale(1.2);
+}
+
+
+#btnSlide {
+  width: 80px;
+  height: 80px;
+  border-radius: 100%;
+  background-color: $textColor;
+  transition: all 200ms ease-in-out;
+  &:hover {
+    background-color: transparent;
+    border: 4px yellow solid;
+    animation: rotateBtn 2s;
+    a {
+      color: $textColor;
+    }
+  }
+  a {
+    color: #fff;
+  }
+}
+
+
+
+/* <------------------- PAGE INDIVIDUELLE PROJET -------------------> */
+
+#main-Y section {
+  min-width: auto;
+  margin-left: $navWidth;
+  color: $textColor;
+}
+
+/* 1ERE SECTION */
+
+#section_projet_intro {
+  height: 100vh;
+  justify-content: space-evenly;
+  div {
+    gap: 30px;
+  }
+}
+
+#btnSite {
+  width: 150px;
+  height: 150px;
+  border-radius: 100%;
+  background-color: yellow;
+}
+
+/* 2ND SECTION */
+
+#section_projet_detail {
+  height: auto;
+  padding-top: 5%;
+  gap: 80px;
+  background: linear-gradient(to bottom, 
+  $backgroundColorVar2 0%, $backgroundColorVar2 80%,
+  $backgroundColorVar4 80%, $backgroundColorVar4 100%);
+  div:nth-child(2) {
+    margin: 0 20%;
+  }
+}
+
+.video {
+  height: 60vh;
+  width: 60vw;
+  video {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+
+.visuel {
+  height: 90vh;
+  width: 60vw;
+  img {
+    object-fit: cover;
+    width: 100%;
+    height: 100%;
+  }
+}
+
+.rollContainer {
+  width: 100%;
+  align-items: flex-start;
+  writing-mode: horizontal-tb;
+  overflow: hidden;
+}
+
+#rollBrand {
+  border-block: 1px solid $textColor;
+  span {
+    transform: translateX(calc(-100% + $navWidth));
+    font-family: $fontRoseblue;
+    font-size: 6rem;
+    letter-spacing: 3px;
+    animation: roll_title 25s linear infinite;
+  }
+}
+
+#rollSoftware {
+  border-block: 1px solid #fff;
+  span {
+    flex: 1;
+    font-family: $fontInconsolata;
+    font-size: 3rem;
+    letter-spacing: 3px;
+    animation: roll_title 25s linear reverse infinite;
+    color: #fff;
+  }
+}
+
+
+@keyframes roll_title {
+  100% {
+    transform: translateX(100vw);
+  }
+}
+
+
+
+/* 3EME SECTION */
