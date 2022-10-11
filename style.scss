@@ -230,7 +230,7 @@ nav input:checked ~ .spanBox span:nth-last-child(1) {
 
 .menu {
   position: absolute;
-  width: $mainWidthMobile;
+  width: 100%;
   background: $navColor;
   border-bottom: $borderStyle;
   -webkit-font-smoothing: antialiased;
@@ -281,7 +281,7 @@ nav input:checked ~ .menuToggle .menu {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  margin: 15px;
+  margin: 0;
 }
 
 
@@ -291,7 +291,6 @@ nav input:checked ~ .menuToggle .menu {
     flex-direction: row;
     position: relative;
     overflow: hidden;
-    margin: 0;
   }
 }
 
@@ -307,10 +306,6 @@ section {
   height: 100vh;
   align-items: center;
   font-size: 4ch;
-  ul {
-    display: flex;
-    flex-direction: column;
-  }
   &:nth-child(even) {
     background-color: $backgroundColorVar2;
   }
@@ -383,10 +378,18 @@ section {
   justify-content: center;
   align-items: center;
   height: 400px;
-  width: 700px;
+  width: 90vw;
   background-color: $textColor;
   h1, h3 {
     color: #fff;
+  }
+}
+
+
+@media all and (min-width: 780px) {
+  #content__01 {
+    height: 400px;
+    width: 700px;
   }
 }
 
@@ -629,6 +632,7 @@ footer {
 #section_projet_intro {
   height: 100vh;
   justify-content: space-evenly;
+  background-color: $backgroundColorVar2;
   div {
     gap: 30px;
   }
@@ -648,7 +652,7 @@ footer {
   padding-top: 5%;
   gap: 80px;
   background: linear-gradient(to bottom, 
-  $backgroundColorVar2 0%, $backgroundColorVar2 80%,
+  $backgroundColorVar3 0%, $backgroundColorVar3 80%,
   $backgroundColorVar4 80%, $backgroundColorVar4 100%);
   div:nth-child(2) {
     margin: 0 20%;
@@ -716,3 +720,17 @@ footer {
 
 
 /* 3EME SECTION */
+
+#verticalList {
+  width: 100%;
+  ul {
+    gap: 10px;
+    justify-content: center;
+    transform: rotate(180deg);
+  }
+  li {
+    color: #fff;
+    writing-mode: vertical-rl;
+    text-orientation: mixed;
+  }
+}

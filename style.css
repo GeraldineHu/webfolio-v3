@@ -177,7 +177,7 @@ nav input:checked ~ .spanBox span:nth-last-child(1) {
 
 .menu {
   position: absolute;
-  width: calc(100vw - 34px);
+  width: 100%;
   background: #ffffff;
   border-bottom: 1px solid #101820;
   -webkit-font-smoothing: antialiased;
@@ -225,7 +225,7 @@ nav input:checked ~ .menuToggle .menu {
   display: flex;
   flex-direction: column;
   overflow-x: hidden;
-  margin: 15px;
+  margin: 0;
 }
 
 @media all and (min-width: 780px) {
@@ -233,7 +233,6 @@ nav input:checked ~ .menuToggle .menu {
     flex-direction: row;
     position: relative;
     overflow: hidden;
-    margin: 0;
   }
 }
 /* <------------------- SECTIONS -------------------> */
@@ -245,10 +244,6 @@ section {
   height: 100vh;
   align-items: center;
   font-size: 4ch;
-}
-section ul {
-  display: flex;
-  flex-direction: column;
 }
 section:nth-child(even) {
   background-color: #FAFAFA;
@@ -317,13 +312,19 @@ section:nth-child(odd) {
   justify-content: center;
   align-items: center;
   height: 400px;
-  width: 700px;
+  width: 90vw;
   background-color: #101820;
 }
 #content__01 h1, #content__01 h3 {
   color: #fff;
 }
 
+@media all and (min-width: 780px) {
+  #content__01 {
+    height: 400px;
+    width: 700px;
+  }
+}
 /* <------------------- SECTION 2 -------------------> */
 #section__02 {
   width: auto;
@@ -545,6 +546,7 @@ footer {
 #section_projet_intro {
   height: 100vh;
   justify-content: space-evenly;
+  background-color: #FAFAFA;
 }
 #section_projet_intro div {
   gap: 30px;
@@ -562,7 +564,7 @@ footer {
   height: auto;
   padding-top: 5%;
   gap: 80px;
-  background: linear-gradient(to bottom, #FAFAFA 0%, #FAFAFA 80%, #101820 80%, #101820 100%);
+  background: linear-gradient(to bottom, #e3e3e3 0%, #e3e3e3 80%, #101820 80%, #101820 100%);
 }
 #section_projet_detail div:nth-child(2) {
   margin: 0 20%;
@@ -624,5 +626,18 @@ footer {
   }
 }
 /* 3EME SECTION */
+#verticalList {
+  width: 100%;
+}
+#verticalList ul {
+  gap: 10px;
+  justify-content: center;
+  transform: rotate(180deg);
+}
+#verticalList li {
+  color: #fff;
+  writing-mode: vertical-rl;
+  text-orientation: mixed;
+}
 
 /*# sourceMappingURL=style.css.map */
